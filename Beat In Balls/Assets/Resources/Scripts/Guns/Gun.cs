@@ -21,7 +21,7 @@ public abstract class Gun : MonoBehaviour
         this.cooldown = 0;
         this.isAutoFire = isAutoFire;
         this.ammoCapacity = ammoCapacity;
-        this.ammoCurrent = 0;
+        this.ammoCurrent = ammoCapacity;
         this.rechargeTime = rechargeTime;
     }
 

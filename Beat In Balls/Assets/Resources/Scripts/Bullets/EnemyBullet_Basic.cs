@@ -27,7 +27,7 @@ public class EnemyBullet_Basic : Bullets
             player.TakeDamage(damage);
 
         if (target.TryGetComponent<Enemy>(out enemy))
-            enemy.RecivedAttack(damage, this.transform.forward, knockbackValue);
+            enemy.RecivedAttack(0, this.transform.forward, knockbackValue);
     }
 
     protected override void Move()

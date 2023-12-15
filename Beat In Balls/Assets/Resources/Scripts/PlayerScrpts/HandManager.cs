@@ -10,11 +10,11 @@ public class HandManager : MonoBehaviour
     [SerializeField] GameObject currentBullet;
 
     [SerializeField] Gun[] listOfGuns;
-    [SerializeField] Bullets[] listOfBullets;
+    [SerializeField] GameObject[] listOfBullets;
 
     [SerializeField] TextMeshProUGUI ammoIndicator;
     [SerializeField] GameObject rechargingIndicator;
-
+    
     private void Start()
     { 
         currentGun = GetComponentInChildren<Gun>();
@@ -44,16 +44,6 @@ public class HandManager : MonoBehaviour
             ammoIndicator.text = "Munição: " + currentGun.CurrentAmmo;
             rechargingIndicator.SetActive(currentGun.IsRecharding);
         }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            EquipGun(0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            EquipGun(1);
-        }
     }
 
 
@@ -63,5 +53,10 @@ public class HandManager : MonoBehaviour
             Destroy(currentGun);
 
         currentGun = Instantiate(listOfGuns[value], this.transform);
+    }
+
+    public void EquipAmmo(int value)
+    {
+        currentBullet = listOfBullets[value];
     }
 }

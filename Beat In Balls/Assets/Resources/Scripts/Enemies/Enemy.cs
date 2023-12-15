@@ -32,6 +32,8 @@ public abstract class Enemy : MonoBehaviour
 
     public bool IsCloseFromPlayer(int distance)
     {
+        if (player == null)
+            return false;
         return Vector3.Distance(this.transform.position, player.transform.position) < distance;
     }
     
