@@ -4,24 +4,14 @@ using UnityEngine;
 
 public class Bullet_Basic : Bullets
 {
-    [SerializeField] int basicDamage, basicKnockback;
-    [SerializeField] float basicLifeTime, basicSpeed;
-
-    private void Awake()
+    protected override void HitPlayer(GameObject enemy)
     {
-        SetBulletValues(basicSpeed, basicDamage, basicKnockback * 10, basicLifeTime);
+        
     }
 
-    protected override void CountLifeSpam()
+    protected override void HitEnemy(GameObject enemy)
     {
-        lifeTime -= Time.deltaTime;
-        if (lifeTime <= 0)
-            DestroyBullet();
-    }
-
-    protected override void HitEnemy(GameObject gameObject)
-    {
-        gameObject.GetComponent<Enemy>().RecivedAttack(damage, this.transform.forward, knockbackValue);
+        DealDamageToEnemy(enemy);
     }
     
     protected override void Move()

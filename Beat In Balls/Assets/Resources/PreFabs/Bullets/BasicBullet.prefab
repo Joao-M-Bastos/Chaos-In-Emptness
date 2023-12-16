@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4011750586062526547}
   - component: {fileID: 2562027412062798259}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: BasicBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,10 +146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66de5bca119964e4abf1205b4dbe3612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicDamage: 1
-  basicKnockback: 2
-  basicLifeTime: 1
-  basicSpeed: 5
+  damage: 1
+  knockbackValue: 2
+  lifeTime: 1
+  speed: 5
 --- !u!1 &6596350791503227971
 GameObject:
   m_ObjectHideFlags: 0

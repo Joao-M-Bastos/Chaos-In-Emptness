@@ -5,18 +5,11 @@ using UnityEngine;
 
 public abstract class Bullets : MonoBehaviour
 {
-    protected int damage, knockbackValue;
-    protected float lifeTime, speed;
+    [SerializeField] protected int effect, effectPotency;
+    [SerializeField] protected bool hasEffect;
 
-    protected void SetBulletValues(
-        float velocidade, int dano, int valorEmpurrao,
-        float tempoVida)
-    {
-        this.speed = velocidade;
-        this.damage = dano;
-        this.knockbackValue = valorEmpurrao;
-        this.lifeTime = tempoVida;
-    }
+    [SerializeField] protected int damage, knockbackValue;
+    [SerializeField] protected float lifeTime, speed;
 
     public void AddToDano(int value)
     {
@@ -34,15 +27,21 @@ public abstract class Bullets : MonoBehaviour
 
     protected abstract void OnDestroy();
 
-    protected abstract void HitEnemy(GameObject alvo);
+    protected abstract void HitEnemy(GameObject enemy);
+
+    protected abstract void HitPlayer(GameObject player);
 
     protected abstract void Move();
 
     private void OnTriggerEnter(Collider other)
     {
-        HitEnemy(other.gameObject);
+        if(other.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+            HitEnemy(other.gameObject);
+        else if (other.gameObject.TryGetComponent<PlayerCombat>(out PlayerCombat player))
+            HitPlayer(other.gameObject);
+
+
         DestroyBullet();
-        
     }
 
     protected void DestroyBullet()
@@ -56,6 +55,26 @@ public abstract class Bullets : MonoBehaviour
         CountLifeSpam();
     }
 
-    protected abstract void CountLifeSpam();
+    public void DealDamageToPlayer(GameObject player)
+    {
+        player.GetComponent<PlayerCombat>().TakeDamage(damage);
+    }
+
+    public void DealDamageToEnemy(GameObject enemy)
+    {
+        enemy.GetComponent<Enemy>().RecivedAttack(damage, this.transform.forward, knockbackValue);
+    }
+
+    public void TryApllyEffect()
+    {
+
+    }
+
+    protected void CountLifeSpam()
+    {
+        lifeTime -= Time.deltaTime;
+        if (lifeTime <= 0)
+            DestroyBullet();
+    }
 
 }
