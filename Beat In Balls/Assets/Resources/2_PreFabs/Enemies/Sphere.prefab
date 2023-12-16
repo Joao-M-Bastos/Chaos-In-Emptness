@@ -114,17 +114,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91980a3e84e707541828651ac990576e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRigidbody: {fileID: 0}
-  vida: 6
-  dano: 1
-  resistenciaEmpurrao: 1
-  empurrao: 2
-  velocidadeBase: 6
-  vidaBola: 6
-  danoBola: 1
-  resistenciaEmpurraoBola: 1
-  empurraoBola: 2
-  velocidadeBaseBola: 6
+  vidaBase: 10
+  danoBase: 1
+  resistanceBase: 0
+  resistenciaEmpurraoBase: 1
+  empurraoBase: 3
+  velocidadeBase: 7
+  attackspeedBase: 0
 --- !u!135 &7228722400752019780
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -10,17 +10,17 @@ public abstract class Enemy : MonoBehaviour
     protected Rigidbody enemyRigidbody;
 
     [SerializeField] protected int vidaBase, danoBase, resistanceBase, resistenciaEmpurraoBase, empurraoBase;
-    [SerializeField] protected float velocidadeBase;
+    [SerializeField] protected float velocidadeBase, attackspeedBase;
 
     protected int vida, dano, resistance, resistenciaEmpurrao, empurrao;
-    protected float velocidade;
+    protected float velocidade, attackspeed;
 
-    protected float stunCooldown, stunReduction;
+    protected float stunCooldown;
 
     protected bool stuned;
 
-    Efeitos sobreEfeitos;
-    Efeitos efeitoNeutro = new Efeito_Neutro();
+    int effectID;
+    float effectTimer;
     
 
     //BaseValues
@@ -28,6 +28,13 @@ public abstract class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         enemyRigidbody = this.gameObject.GetComponent<Rigidbody>();
+
+        vida = vidaBase;
+        dano = danoBase;
+        resistance = resistanceBase;
+        empurrao = empurraoBase;
+        velocidade = velocidadeBase;
+        attackspeed = attackspeedBase;
     }
 
     //Condições ou Calculos
@@ -82,8 +89,10 @@ public abstract class Enemy : MonoBehaviour
         Vector3 direction = projectForward;
         float knockBackValue = bulletKnockbackValue - resistenciaEmpurrao;
 
-        if (empurrao < 0)
-            empurrao = 0;
+        if (knockBackValue < 0)
+            knockBackValue = 0;
+
+        Debug.Log(knockBackValue);
 
         this.enemyRigidbody.AddForce(direction * (knockBackValue), ForceMode.Impulse);
 
@@ -100,20 +109,37 @@ public abstract class Enemy : MonoBehaviour
     }
 
     //Efeitos
-    public void ApplyEffect(Efeitos effect)
+    public void ApplyEffect(int _effectId)
     {
-        sobreEfeitos = effect;
+        effectID = _effectId;
+
+        Effects currentEffect = ListOfEffects.GetTargetEffect(effectID);
+
+        effectTimer = currentEffect.GetTime();
+
+        vida += currentEffect.EffectOnLife();
+        dano += danoBase * (currentEffect.EffectOnDamage()/100);
+        resistance += resistanceBase * (currentEffect.EffectOnResistance()/100);
+        empurrao += empurraoBase * (currentEffect.EffectOnLife()/100);
+        velocidade += velocidadeBase * (currentEffect.EffectOnLife()/100);
+        attackspeed += attackspeedBase * (currentEffect.EffectOnAttackSpeed()/100);
     }
 
     public bool IsUnderEffect()
     {
-        return sobreEfeitos.GetName() != efeitoNeutro.GetName();
+        return effectTimer > 0;
     }
 
     public void ClearEffect()
     {
-        ApplyEffect(efeitoNeutro);
-    }
+        Effects currentEffect = ListOfEffects.GetTargetEffect(effectID);
 
-    public abstract void EffectEfect();
+        effectTimer = 0;
+
+        dano -= danoBase * (currentEffect.EffectOnDamage() / 100);
+        resistance -= resistanceBase * (currentEffect.EffectOnResistance() / 100);
+        empurrao -= empurraoBase * (currentEffect.EffectOnLife() / 100);
+        velocidade -= velocidadeBase * (currentEffect.EffectOnLife() / 100);
+        attackspeed -= attackspeedBase * (currentEffect.EffectOnAttackSpeed() / 100);
+    }
 }

@@ -43,11 +43,6 @@ public class Enemy_Sniper : Ranged
         throw new System.NotImplementedException();
     }
 
-    public override void EffectEfect()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void FollowPlayer()
     {
         transform.LookAt(player.transform.position);

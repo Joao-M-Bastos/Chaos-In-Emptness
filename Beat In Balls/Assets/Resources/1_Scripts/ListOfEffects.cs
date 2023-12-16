@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class ListOfEffects : MonoBehaviour
 {
-    Efeitos[] effects;
+    static Effects[] effects;
     // Start is called before the first frame update
     void Start()
     {
-        effects = new Efeitos[]{
-            new Efeito_Neutro(),
-            new StunEffect()
+        effects = new Effects[]{
+            new EffectSlow(10)
         };
     }
 
-    public Efeitos GetRandomEffect()
+    public static Effects GetRandomEffect()
     {
         return effects[Random.Range(0,effects.Length)];
     }
 
-    public Efeitos GetTargetEffect(int value)
+    public static Effects GetTargetEffect(int value)
     {
         return effects[value];
     }

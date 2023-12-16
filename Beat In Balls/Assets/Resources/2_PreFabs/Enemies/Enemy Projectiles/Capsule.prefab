@@ -142,7 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb9606f365e91e468d4b480f8c5b100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicDamage: 1
-  basicKnockback: 1
-  basicLifeTime: 4
-  basicSpeed: 2
+  effectID: 0
+  effectPotency: 0
+  hasEffect: 0
+  damage: 1
+  knockbackValue: 1
+  lifeTime: 5
+  speed: 3

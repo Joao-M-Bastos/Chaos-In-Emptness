@@ -127,10 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1958653c750a72f4fb45406dc20c127d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRigidbody: {fileID: 0}
-  vida: 3
-  dano: 1
-  resistenciaEmpurrao: 0
-  empurrao: 1
-  velocidadeBase: 15
+  vidaBase: 6
+  danoBase: 1
+  resistanceBase: 0
+  resistenciaEmpurraoBase: 1
+  empurraoBase: 2
+  velocidadeBase: 10
+  attackspeedBase: 0
   randomDashCooldownBase: 5

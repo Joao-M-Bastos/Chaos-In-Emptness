@@ -54,11 +54,6 @@ public class Enemy_Ball : Enemy
         throw new System.NotImplementedException();
     }
 
-    public override void EffectEfect()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void FollowPlayer()
     {
         transform.LookAt(player.transform.position);

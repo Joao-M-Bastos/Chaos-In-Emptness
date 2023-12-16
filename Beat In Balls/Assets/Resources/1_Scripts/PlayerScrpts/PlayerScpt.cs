@@ -8,8 +8,7 @@ public class PlayerScpt : MonoBehaviour
     HandManager playerHand;
     [SerializeField]GameManagerScpt gameManager;
 
-    Efeitos sobreEfeitos;
-    Efeitos efeitoNeutro = new Efeito_Neutro();
+    float sobreEfeitos;
 
     private void Awake()
     {
@@ -41,18 +40,20 @@ public class PlayerScpt : MonoBehaviour
     }
 
     //Efeitos
-    public void ApplyEffect(Efeitos effect)
+    public void ApplyEffect(float time)
     {
-        sobreEfeitos = effect;
+        sobreEfeitos = time;
+
+
     }
 
     public bool IsUnderEffect()
     {
-        return sobreEfeitos.GetName() != efeitoNeutro.GetName();
+        return sobreEfeitos > 0;
     }
 
     public void ClearEffect()
     {
-        ApplyEffect(efeitoNeutro);
+        
     }
 }

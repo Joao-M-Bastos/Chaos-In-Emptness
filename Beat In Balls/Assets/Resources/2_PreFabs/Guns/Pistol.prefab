@@ -169,7 +169,7 @@ MonoBehaviour:
   rechargeTimePistol: 0.8
   bulletSizeChange: 1
   bulletSpeedChange: 0
-  bulletDamageChange: 1
+  bulletDamageChange: 3
   bulletLifeSpamChange: 2
 --- !u!1 &3338965029757156820
 GameObject:

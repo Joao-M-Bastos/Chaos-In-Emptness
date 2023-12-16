@@ -13,14 +13,14 @@ public class EffectApplyer : MonoBehaviour
         if (enemy == null)
             isPlayer = true;
 
-        ApplyEffectInTarget(new Efeito_Neutro());
+        ApplyEffectInTarget(0);
     }
 
-    public void ApplyEffectInTarget(Efeitos efeito)
+    public void ApplyEffectInTarget(int effectID)
     {
         if (isPlayer)
-            player.ApplyEffect(efeito);
+            player.ApplyEffect(effectID);
         else
-            enemy.ApplyEffect(efeito);
+            enemy.ApplyEffect(effectID);
     }
 }

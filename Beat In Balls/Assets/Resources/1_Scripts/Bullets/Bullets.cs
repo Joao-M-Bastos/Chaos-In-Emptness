@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public abstract class Bullets : MonoBehaviour
 {
-    [SerializeField] protected Efeitos effect;
+    [SerializeField] protected int effectID;
     [SerializeField] protected int effectPotency;
     [SerializeField] protected bool hasEffect;
     
@@ -79,9 +79,10 @@ public abstract class Bullets : MonoBehaviour
             return;
 
         float temp = Random.Range(0, 1f);
+
         if(temp < effectPotency)
         {
-            effectApplyer.ApplyEffectInTarget(effect);
+            effectApplyer.ApplyEffectInTarget(effectID);
         }
     }
 
