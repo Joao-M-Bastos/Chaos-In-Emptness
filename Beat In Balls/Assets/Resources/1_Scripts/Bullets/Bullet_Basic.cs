@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Bullet_Basic : Bullets
 {
-    protected override void HitPlayer(Enemy enemy)
+    protected override void HitPlayer(PlayerScpt enemy)
     {
         
     }
 
-    protected override void HitEnemy(PlayerScpt enemy)
+    protected override void HitEnemy(Enemy enemy)
     {
         DealDamageToEnemy(enemy);
     }

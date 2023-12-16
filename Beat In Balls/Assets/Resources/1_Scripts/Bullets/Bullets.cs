@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public abstract class Bullets : MonoBehaviour
 {
@@ -65,9 +66,13 @@ public abstract class Bullets : MonoBehaviour
         enemy.RecivedAttack(damage, this.transform.forward, knockbackValue);
     }
 
-    public void TryApllyEffect()
+    public void TryApllyEffect(Enemy enemy)
     {
-
+        float temp = Random.Range(0, 1f);
+        if(temp < effectPotency)
+        {
+            enemy.ReciveEffect(new Efeito_Neutro());
+        }
     }
 
     protected void CountLifeSpam()

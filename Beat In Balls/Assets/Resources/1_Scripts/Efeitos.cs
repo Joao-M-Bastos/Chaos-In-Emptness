@@ -5,7 +5,8 @@ using UnityEngine;
 public abstract class Efeitos
 {
     protected string nome;
-
+    protected float timeActive;
+      
     public string GetName()
     {
         return nome;
