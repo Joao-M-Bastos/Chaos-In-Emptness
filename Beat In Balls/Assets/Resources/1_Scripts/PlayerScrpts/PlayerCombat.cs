@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField] int life;
+    [SerializeField] int life, resistance;
     [SerializeField] TextMeshProUGUI lifeIndicator;
 
     private void Start()
     {
         lifeIndicator.text = "Vida: " + life;
     }
-    public bool TakeDamage(int value)
+    public bool TakeDamage(int damage)
     {
-        life -= value;
+        int dmgNonResisted = damage - resistance;
+
+        if (dmgNonResisted > 0)
+            life -= dmgNonResisted;
         lifeIndicator.text = "Vida: " + life;
         return life < 1;
     }

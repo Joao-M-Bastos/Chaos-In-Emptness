@@ -9,7 +9,7 @@ public abstract class Enemy : MonoBehaviour
     protected GameObject player;
     [SerializeField]protected Rigidbody enemyRigidbody;
 
-    [SerializeField] protected int vida, dano, resistenciaEmpurrao, empurrao;
+    [SerializeField] protected int vida, dano, resistance, resistenciaEmpurrao, empurrao;
     [SerializeField] protected float velocidadeBase;
 
     protected float velocidade, stunCooldown;
@@ -71,7 +71,11 @@ public abstract class Enemy : MonoBehaviour
 
     public void RecivedAttack(int damage, Vector3 projectForward, int bulletKnockbackValue)
     {
-        this.vida -= damage;
+        int dmgNonResisted = damage - resistance;
+
+        if(dmgNonResisted > 0)
+            vida -= dmgNonResisted;
+
         Vector3 direction = projectForward;
         float knockBackValue = bulletKnockbackValue - resistenciaEmpurrao;
 

@@ -61,7 +61,7 @@ public class Enemy_Sniper : Ranged
         if (IsCloseFromPlayer(viewDistance))
         {
             ballVelocity -= this.transform.forward;
-            ballVelocity += this.transform.right * 5;
+            ballVelocity += this.transform.right * 10;
         }
 
         if (getSpeedFromVelocity(ballVelocity) > velocidade)
