@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Efeito_Neutro : Efeitos
+public class StunEffect : Efeitos
 {
-    public void Start()
-    {
-        nome = "neutro";
-    }
-
     public override float EfeitoNaVelocidade()
     {
         throw new System.NotImplementedException();

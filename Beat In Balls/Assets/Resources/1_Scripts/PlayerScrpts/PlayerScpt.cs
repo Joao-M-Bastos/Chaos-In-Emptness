@@ -8,12 +8,16 @@ public class PlayerScpt : MonoBehaviour
     HandManager playerHand;
     [SerializeField]GameManagerScpt gameManager;
 
+    Efeitos sobreEfeitos;
+    Efeitos efeitoNeutro = new Efeito_Neutro();
 
     private void Awake()
     {
         playerCombat = GetComponent<PlayerCombat>();
         playerHand = GetComponentInChildren<HandManager>();
     }
+
+    //Combat
 
     public void TakeDamage(int value)
     {
@@ -24,6 +28,8 @@ public class PlayerScpt : MonoBehaviour
         }
     }
 
+    //HandManager
+
     public void ChangeGun(int gunID)
     {
         playerHand.EquipGun(gunID);
@@ -32,5 +38,21 @@ public class PlayerScpt : MonoBehaviour
     public void ChangeAmmo(int ammoID)
     {
         playerHand.EquipAmmo(ammoID);
+    }
+
+    //Efeitos
+    public void ApplyEffect(Efeitos effect)
+    {
+        sobreEfeitos = effect;
+    }
+
+    public bool IsUnderEffect()
+    {
+        return sobreEfeitos.GetName() != efeitoNeutro.GetName();
+    }
+
+    public void ClearEffect()
+    {
+        ApplyEffect(efeitoNeutro);
     }
 }

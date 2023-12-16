@@ -43,7 +43,7 @@ public class Enemy_Sniper : Ranged
         throw new System.NotImplementedException();
     }
 
-    public override void EfectEfect()
+    public override void EffectEfect()
     {
         throw new System.NotImplementedException();
     }

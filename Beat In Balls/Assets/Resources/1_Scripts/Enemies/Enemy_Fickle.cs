@@ -111,7 +111,7 @@ public class Enemy_Fickle : Enemy
         stuned = true;
     }
 
-    public override void EfectEfect()
+    public override void EffectEfect()
     {
         throw new System.NotImplementedException();
     }

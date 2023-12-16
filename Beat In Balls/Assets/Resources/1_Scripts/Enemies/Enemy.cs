@@ -27,7 +27,7 @@ public abstract class Enemy : MonoBehaviour
         enemyRigidbody = this.gameObject.GetComponent<Rigidbody>();
     }
 
-    //Condições
+    //Condições ou Calculos
     public abstract bool CanAttack();
 
     public bool IsCloseFromPlayer(int distance)
@@ -56,6 +56,10 @@ public abstract class Enemy : MonoBehaviour
         {
             player.TakeDamage(dano);
         }
+    }
+    protected float getSpeedFromVelocity(Vector3 playerVelocity)
+    {
+        return Mathf.Abs(playerVelocity.x) + Mathf.Abs(playerVelocity.y) + Mathf.Abs(playerVelocity.z);
     }
 
     //Ações
@@ -87,30 +91,22 @@ public abstract class Enemy : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
     //Efeitos
-    public void ReciveEffect(Efeitos effect) {
+    public void ApplyEffect(Efeitos effect)
+    {
         sobreEfeitos = effect;
     }
 
     public bool IsUnderEffect()
     {
-        if(sobreEfeitos.GetName() != efeitoNeutro.GetName())
-        {
-            return true;
-        }
-        return false;
+        return sobreEfeitos.GetName() != efeitoNeutro.GetName();
     }
 
     public void ClearEffect()
     {
-        ReciveEffect(efeitoNeutro);
-
+        ApplyEffect(efeitoNeutro);
     }
 
-    protected float getSpeedFromVelocity(Vector3 playerVelocity)
-    {
-        return Mathf.Abs(playerVelocity.x) + Mathf.Abs(playerVelocity.y) + Mathf.Abs(playerVelocity.z);
-    }
-
-    public abstract void EfectEfect();
+    public abstract void EffectEfect();
 }

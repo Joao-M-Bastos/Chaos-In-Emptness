@@ -11,8 +11,14 @@ public class ListOfEnemies : MonoBehaviour
     {
         enemies = enemiesAut;
     }
-    public static GameObject[] GetListOfEnemies()
+
+    public static GameObject GetRandomEnemy()
     {
-        return enemies;
+        return enemies[Random.Range(0, enemies.Length)];
+    }
+
+    public static GameObject GetTargetEnemy(int code)
+    {
+        return enemies[code];
     }
 }

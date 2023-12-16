@@ -6,8 +6,10 @@ using Random = UnityEngine.Random;
 
 public abstract class Bullets : MonoBehaviour
 {
-    [SerializeField] protected int effect, effectPotency;
+    [SerializeField] protected Efeitos effect;
+    [SerializeField] protected int effectPotency;
     [SerializeField] protected bool hasEffect;
+    
 
     [SerializeField] protected int damage, knockbackValue;
     [SerializeField] protected float lifeTime, speed;
@@ -36,11 +38,16 @@ public abstract class Bullets : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+        if (other.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+        {
             HitEnemy(enemy);
+            TryApllyEffect(other.gameObject.GetComponent<EffectApplyer>());
+        }
         else if (other.gameObject.TryGetComponent<PlayerScpt>(out PlayerScpt player))
+        {
             HitPlayer(player);
-
+            TryApllyEffect(other.gameObject.GetComponent<EffectApplyer>());
+        }
 
         DestroyBullet();
     }
@@ -66,12 +73,15 @@ public abstract class Bullets : MonoBehaviour
         enemy.RecivedAttack(damage, this.transform.forward, knockbackValue);
     }
 
-    public void TryApllyEffect(Enemy enemy)
+    public void TryApllyEffect(EffectApplyer effectApplyer)
     {
+        if (!hasEffect)
+            return;
+
         float temp = Random.Range(0, 1f);
         if(temp < effectPotency)
         {
-            enemy.ReciveEffect(new Efeito_Neutro());
+            effectApplyer.ApplyEffectInTarget(effect);
         }
     }
 

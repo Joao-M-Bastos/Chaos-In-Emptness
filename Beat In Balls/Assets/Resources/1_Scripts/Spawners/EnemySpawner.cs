@@ -10,8 +10,6 @@ public abstract class EnemySpawner : MonoBehaviour
 
     [SerializeField] protected float playerDistance;
 
-    protected GameObject[] enemyList; 
-
     protected Transform playerTransform;
 
     public bool canSpawn;
@@ -20,7 +18,6 @@ public abstract class EnemySpawner : MonoBehaviour
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        enemyList = ListOfEnemies.GetListOfEnemies();
         StartCoroutine(SpawnEnemies());
     }
 
@@ -33,9 +30,9 @@ public abstract class EnemySpawner : MonoBehaviour
 
     private void SpawnRandomEnemy()
     {
-        int listIndex = Random.Range(0, enemyList.Length);
+        GameObject randomEnemy = ListOfEnemies.GetRandomEnemy();
 
-        Instantiate(enemyList[listIndex], RandomizeLocation(), enemyList[listIndex].transform.rotation);
+        Instantiate(randomEnemy, RandomizeLocation(), randomEnemy.transform.rotation);
     }
 
     protected abstract Vector3 RandomizeLocation();

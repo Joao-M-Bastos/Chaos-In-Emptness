@@ -54,7 +54,7 @@ public class Enemy_Ball : Enemy
         throw new System.NotImplementedException();
     }
 
-    public override void EfectEfect()
+    public override void EffectEfect()
     {
         throw new System.NotImplementedException();
     }
