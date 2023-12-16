@@ -16,7 +16,7 @@ public class Enemy_Fickle : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (GameManagerScpt.IsPaused && player == null)
+        if (GameManagerScpt.IsPaused || player == null || velocidade == 0)
             return;
 
         if (CanAttack())
@@ -24,6 +24,9 @@ public class Enemy_Fickle : Enemy
 
         if (CanUseSpecial())
             SpecialAttack();
+
+        if (IsUnderEffect())
+            TryCleatEffect();
     }
 
     private void FixedUpdate()
@@ -55,14 +58,13 @@ public class Enemy_Fickle : Enemy
 
         Vector3 fickleVelocity = enemyRigidbody.velocity;
 
-        fickleVelocity += this.transform.forward;
+        if (getSpeedFromVelocity(fickleVelocity) < velocidade)
+        { 
+            fickleVelocity += this.transform.forward;
+        }
 
         fickleVelocity *= 0.9f;
 
-        if (getSpeedFromVelocity(fickleVelocity) > velocidade)
-        {
-            fickleVelocity -= this.transform.forward * 0.3f;
-        }
         enemyRigidbody.velocity = fickleVelocity;
     }
 

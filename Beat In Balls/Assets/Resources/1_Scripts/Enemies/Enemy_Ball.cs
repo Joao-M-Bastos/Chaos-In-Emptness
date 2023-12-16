@@ -12,11 +12,14 @@ public class Enemy_Ball : Enemy
 
     private void Update()
     {
-        if (GameManagerScpt.IsPaused && player == null)
+        if (GameManagerScpt.IsPaused || player == null || velocidade == 0)
             return;
 
         if (CanAttack())
             Attack();
+
+        if (IsUnderEffect())
+            TryCleatEffect();
     }
 
     private void FixedUpdate()
@@ -60,14 +63,15 @@ public class Enemy_Ball : Enemy
 
         Vector3 ballVelocity = enemyRigidbody.velocity;
 
-        ballVelocity += this.transform.forward;
+
+        if (getSpeedFromVelocity(ballVelocity) < velocidade)
+        {
+            ballVelocity += this.transform.forward;
+        }
 
         ballVelocity *= 0.9f;
 
-        if (getSpeedFromVelocity(ballVelocity) > velocidade)
-        {
-            ballVelocity -= this.transform.forward * 0.3f;
-        }
+        
         enemyRigidbody.velocity = ballVelocity;
     }
 

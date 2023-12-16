@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectID: 0
-  effectPotency: 0
-  hasEffect: 0
+  effectPotency: 50
+  hasEffect: 1
   damage: 2
   knockbackValue: 10
   lifeTime: 2

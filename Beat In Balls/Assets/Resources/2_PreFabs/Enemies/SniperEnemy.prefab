@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 2621845997550115021}
   - component: {fileID: 9099189588492441537}
   - component: {fileID: 1799323259}
+  - component: {fileID: 1900435199474120087}
   m_Layer: 0
   m_Name: SniperEnemy
   m_TagString: Untagged
@@ -262,9 +263,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.47976768
-  m_Height: 1.8851616
+  m_Height: 1.4821965
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.32}
+  m_Center: {x: 9.2124574e-17, y: 0, z: 0.11851728}
 --- !u!114 &1799323259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +290,20 @@ MonoBehaviour:
   bullet: {fileID: 4535646125244181059, guid: cd114cf7f2714954981d81dc0e0841aa, type: 3}
   bulletSpawnPoints:
   - {fileID: 5173138382575907578}
+--- !u!114 &1900435199474120087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7498905215852250049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca609c0ea441564cbebff1ce8597851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &8332017004516933680
 GameObject:
   m_ObjectHideFlags: 0

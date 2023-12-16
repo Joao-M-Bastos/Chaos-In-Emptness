@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6105077727771961553}
   - component: {fileID: 7228722400752019780}
   - component: {fileID: 3531559812075983001}
+  - component: {fileID: 6857533803512393179}
   m_Layer: 0
   m_Name: Fickle
   m_TagString: Untagged
@@ -135,3 +136,17 @@ MonoBehaviour:
   velocidadeBase: 10
   attackspeedBase: 0
   randomDashCooldownBase: 5
+--- !u!114 &6857533803512393179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105077727771961583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca609c0ea441564cbebff1ce8597851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  player: {fileID: 0}

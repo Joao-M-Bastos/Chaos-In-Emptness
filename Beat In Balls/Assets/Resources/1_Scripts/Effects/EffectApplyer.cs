@@ -6,14 +6,15 @@ public class EffectApplyer : MonoBehaviour
 {
     [SerializeField] Enemy enemy;
     [SerializeField] PlayerScpt player;
-    bool isPlayer;
+    bool isPlayer = true;
 
     private void Start()
     {
-        if (enemy == null)
-            isPlayer = true;
-
-        ApplyEffectInTarget(0);
+        if (player == null)
+        {
+            isPlayer = false;
+            enemy = this.gameObject.GetComponent<Enemy>();
+        }
     }
 
     public void ApplyEffectInTarget(int effectID)

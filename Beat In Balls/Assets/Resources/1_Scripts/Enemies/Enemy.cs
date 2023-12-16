@@ -92,8 +92,6 @@ public abstract class Enemy : MonoBehaviour
         if (knockBackValue < 0)
             knockBackValue = 0;
 
-        Debug.Log(knockBackValue);
-
         this.enemyRigidbody.AddForce(direction * (knockBackValue), ForceMode.Impulse);
 
         if (vida <= 0)
@@ -121,13 +119,20 @@ public abstract class Enemy : MonoBehaviour
         dano += danoBase * (currentEffect.EffectOnDamage()/100);
         resistance += resistanceBase * (currentEffect.EffectOnResistance()/100);
         empurrao += empurraoBase * (currentEffect.EffectOnLife()/100);
-        velocidade += velocidadeBase * (currentEffect.EffectOnLife()/100);
+        velocidade += velocidadeBase * (currentEffect.EffectOnSpeed()/100);
         attackspeed += attackspeedBase * (currentEffect.EffectOnAttackSpeed()/100);
     }
 
     public bool IsUnderEffect()
     {
         return effectTimer > 0;
+    }
+
+    public void TryCleatEffect()
+    {
+        effectTimer -= Time.deltaTime;
+        if (effectTimer < 0)
+            ClearEffect();
     }
 
     public void ClearEffect()
@@ -141,5 +146,7 @@ public abstract class Enemy : MonoBehaviour
         empurrao -= empurraoBase * (currentEffect.EffectOnLife() / 100);
         velocidade -= velocidadeBase * (currentEffect.EffectOnLife() / 100);
         attackspeed -= attackspeedBase * (currentEffect.EffectOnAttackSpeed() / 100);
+
+        Debug.Log(velocidadeBase * (currentEffect.EffectOnSpeed() / 100) + " : " + velocidade);
     }
 }
