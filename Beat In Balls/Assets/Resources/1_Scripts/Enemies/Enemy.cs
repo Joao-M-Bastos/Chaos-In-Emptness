@@ -21,6 +21,7 @@ public abstract class Enemy : MonoBehaviour
 
     int effectID;
     float effectTimer;
+    bool isUndereffect;
     
 
     //BaseValues
@@ -113,19 +114,23 @@ public abstract class Enemy : MonoBehaviour
 
         Effects currentEffect = ListOfEffects.GetTargetEffect(effectID);
 
+        isUndereffect = true;
+
         effectTimer = currentEffect.GetTime();
 
         vida += currentEffect.EffectOnLife();
         dano += danoBase * (currentEffect.EffectOnDamage()/100);
         resistance += resistanceBase * (currentEffect.EffectOnResistance()/100);
-        empurrao += empurraoBase * (currentEffect.EffectOnLife()/100);
+        empurrao += empurraoBase * (currentEffect.EffectOnKnockback()/100);
         velocidade += velocidadeBase * (currentEffect.EffectOnSpeed()/100);
         attackspeed += attackspeedBase * (currentEffect.EffectOnAttackSpeed()/100);
+
+        Debug.Log(velocidade);
     }
 
     public bool IsUnderEffect()
     {
-        return effectTimer > 0;
+        return isUndereffect;
     }
 
     public void TryCleatEffect()
@@ -140,13 +145,14 @@ public abstract class Enemy : MonoBehaviour
         Effects currentEffect = ListOfEffects.GetTargetEffect(effectID);
 
         effectTimer = 0;
+        isUndereffect = false;
 
         dano -= danoBase * (currentEffect.EffectOnDamage() / 100);
         resistance -= resistanceBase * (currentEffect.EffectOnResistance() / 100);
-        empurrao -= empurraoBase * (currentEffect.EffectOnLife() / 100);
-        velocidade -= velocidadeBase * (currentEffect.EffectOnLife() / 100);
+        empurrao -= empurraoBase * (currentEffect.EffectOnKnockback() / 100);
+        velocidade -= velocidadeBase * (currentEffect.EffectOnSpeed() / 100);
         attackspeed -= attackspeedBase * (currentEffect.EffectOnAttackSpeed() / 100);
 
-        Debug.Log(velocidadeBase * (currentEffect.EffectOnSpeed() / 100) + " : " + velocidade);
+        Debug.Log(velocidade);
     }
 }
