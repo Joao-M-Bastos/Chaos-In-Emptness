@@ -27,18 +27,18 @@ public abstract class Bullets : MonoBehaviour
 
     protected abstract void OnDestroy();
 
-    protected abstract void HitEnemy(GameObject enemy);
+    protected abstract void HitEnemy(Enemy enemy);
 
-    protected abstract void HitPlayer(GameObject player);
+    protected abstract void HitPlayer(PlayerScpt player);
 
     protected abstract void Move();
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
-            HitEnemy(other.gameObject);
-        else if (other.gameObject.TryGetComponent<PlayerCombat>(out PlayerCombat player))
-            HitPlayer(other.gameObject);
+            HitEnemy(enemy);
+        else if (other.gameObject.TryGetComponent<PlayerScpt>(out PlayerScpt player))
+            HitPlayer(player);
 
 
         DestroyBullet();
@@ -55,14 +55,14 @@ public abstract class Bullets : MonoBehaviour
         CountLifeSpam();
     }
 
-    public void DealDamageToPlayer(GameObject player)
+    public void DealDamageToPlayer(PlayerScpt player)
     {
-        player.GetComponent<PlayerCombat>().TakeDamage(damage);
+        player.TakeDamage(damage);
     }
 
-    public void DealDamageToEnemy(GameObject enemy)
+    public void DealDamageToEnemy(Enemy enemy)
     {
-        enemy.GetComponent<Enemy>().RecivedAttack(damage, this.transform.forward, knockbackValue);
+        enemy.RecivedAttack(damage, this.transform.forward, knockbackValue);
     }
 
     public void TryApllyEffect()

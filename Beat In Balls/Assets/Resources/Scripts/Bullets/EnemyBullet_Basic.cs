@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class EnemyBullet_Basic : Bullets
 {
-    protected override void HitEnemy(GameObject enemy)
+    protected override void HitEnemy(Enemy enemy)
     {
-        enemy.GetComponent<Enemy>().RecivedAttack(0, this.transform.forward, knockbackValue);
+        enemy.RecivedAttack(0, this.transform.forward, knockbackValue);
     }
 
-    protected override void HitPlayer(GameObject player)
+    protected override void HitPlayer(PlayerScpt player)
     {
-        player.GetComponent<PlayerCombat>().TakeDamage(damage);
-        
+        player.TakeDamage(damage);
     }
 
     protected override void Move()
