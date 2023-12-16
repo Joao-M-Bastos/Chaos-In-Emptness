@@ -12,9 +12,9 @@ public abstract class Efeitos
         return nome;
     }
 
-    public abstract int EfeitoNaVida();
+    public abstract int EffectOnLife();
 
-    public abstract float EfeitoNaVelocidade();
+    public abstract float EffectOnSpeed();
 
-    public abstract float EfeitoNoDano();
+    public abstract float EffectOnResistance();
 }

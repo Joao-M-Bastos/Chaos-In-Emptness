@@ -7,12 +7,15 @@ public abstract class Enemy : MonoBehaviour
 
     //Valores
     protected GameObject player;
-    [SerializeField]protected Rigidbody enemyRigidbody;
+    protected Rigidbody enemyRigidbody;
 
-    [SerializeField] protected int vida, dano, resistance, resistenciaEmpurrao, empurrao;
+    [SerializeField] protected int vidaBase, danoBase, resistanceBase, resistenciaEmpurraoBase, empurraoBase;
     [SerializeField] protected float velocidadeBase;
 
-    protected float velocidade, stunCooldown;
+    protected int vida, dano, resistance, resistenciaEmpurrao, empurrao;
+    protected float velocidade;
+
+    protected float stunCooldown, stunReduction;
 
     protected bool stuned;
 
