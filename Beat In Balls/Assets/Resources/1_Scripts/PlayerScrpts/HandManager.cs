@@ -50,7 +50,7 @@ public class HandManager : MonoBehaviour
     public void EquipGun(int value)
     {
         if (currentGun != null)
-            Destroy(currentGun);
+            Destroy(currentGun.gameObject);
 
         currentGun = Instantiate(listOfGuns[value], this.transform);
     }
