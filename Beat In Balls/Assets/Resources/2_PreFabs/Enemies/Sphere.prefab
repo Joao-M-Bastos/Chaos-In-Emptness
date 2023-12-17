@@ -120,7 +120,7 @@ MonoBehaviour:
   resistanceBase: 0
   resistenciaEmpurraoBase: 1
   knockbackPowerBase: 5
-  velocidadeBase: 7
+  velocidadeBase: 9
 --- !u!135 &7228722400752019780
 SphereCollider:
   m_ObjectHideFlags: 0

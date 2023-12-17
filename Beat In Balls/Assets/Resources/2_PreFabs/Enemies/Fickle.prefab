@@ -133,8 +133,8 @@ MonoBehaviour:
   resistanceBase: 0
   resistenciaEmpurraoBase: 1
   knockbackPowerBase: 3
-  velocidadeBase: 10
-  randomDashCooldownBase: 5
+  velocidadeBase: 12
+  randomDashCooldownBase: 8
 --- !u!114 &6857533803512393179
 MonoBehaviour:
   m_ObjectHideFlags: 0
