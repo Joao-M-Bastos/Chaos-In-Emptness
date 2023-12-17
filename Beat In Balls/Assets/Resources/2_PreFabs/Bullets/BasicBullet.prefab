@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66de5bca119964e4abf1205b4dbe3612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectID: 0
+  effectID: 1
   effectPotency: 50
   hasEffect: 1
   damage: 2

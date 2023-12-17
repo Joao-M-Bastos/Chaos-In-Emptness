@@ -11,14 +11,18 @@ public class Enemy_Sniper : Ranged
 
     private void Update()
     {
-        if (GameManagerScpt.IsPaused || player == null || velocidade == 0)
+        if (GameManagerScpt.IsPaused || player == null)
+            return;
+
+        if (IsUnderEffect())
+            TryCleatEffect();
+
+        if (velocidade == 0)
             return;
 
         if (CanAttack())
             Attack();
-
-        if(IsUnderEffect())
-            TryCleatEffect();
+       
     }
 
     private void FixedUpdate()
@@ -33,7 +37,7 @@ public class Enemy_Sniper : Ranged
 
     public override void Attack()
     {
-        Shoot(shootCooldown);
+        StartCoroutine(Shoot(shootCooldown));
     }
 
     public override bool CanAttack()
@@ -48,8 +52,6 @@ public class Enemy_Sniper : Ranged
 
     public override void FollowPlayer()
     {
-        
-
         transform.LookAt(player.transform.position);
 
         Vector3 ballVelocity = enemyRigidbody.velocity;
@@ -61,7 +63,7 @@ public class Enemy_Sniper : Ranged
 
         ballVelocity *= 0.9f;
 
-        if (IsCloseFromPlayer(viewDistance))
+        if (IsCloseFromPlayer(viewDistance) && velocidade > 0)
         {
             ballVelocity -= this.transform.forward;
             ballVelocity += this.transform.right * 10;

@@ -16,7 +16,13 @@ public class Enemy_Fickle : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (GameManagerScpt.IsPaused || player == null || velocidade == 0)
+        if (GameManagerScpt.IsPaused || player == null)
+            return;
+
+        if (IsUnderEffect())
+            TryCleatEffect();
+
+        if (velocidade == 0)
             return;
 
         if (CanAttack())
@@ -24,9 +30,6 @@ public class Enemy_Fickle : Enemy
 
         if (CanUseSpecial())
             SpecialAttack();
-
-        if (IsUnderEffect())
-            TryCleatEffect();
     }
 
     private void FixedUpdate()

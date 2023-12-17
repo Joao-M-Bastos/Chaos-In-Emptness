@@ -9,7 +9,8 @@ public class ListOfEffects : MonoBehaviour
     void Start()
     {
         effects = new Effects[]{
-            new EffectSlow(10)
+            new EffectSlow(10),
+            new EffectStun(3)
         };
     }
 

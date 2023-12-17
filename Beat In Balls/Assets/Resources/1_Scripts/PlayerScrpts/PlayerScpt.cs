@@ -15,6 +15,7 @@ public class PlayerScpt : MonoBehaviour
     {
         playerCombat = GetComponent<PlayerCombat>();
         playerHand = GetComponentInChildren<HandManager>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     //Combat

@@ -147,6 +147,9 @@ public abstract class Enemy : MonoBehaviour
 
     public void ClearEffect()
     {
+        if (!isUndereffect)
+            return;
+
         Effects currentEffect = ListOfEffects.GetTargetEffect(effectID);
 
         effectTimer = 0;

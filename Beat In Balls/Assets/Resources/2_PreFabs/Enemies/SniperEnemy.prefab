@@ -282,10 +282,11 @@ MonoBehaviour:
   danoBase: 2
   resistanceBase: 1
   resistenciaEmpurraoBase: 0
-  empurraoBase: 3
+  knockbackPowerBase: 1
   velocidadeBase: 4
   viewDistance: 20
   rechargeCooldownBase: 4
+  shootCooldown: 1.5
   bullet: {fileID: 4535646125244181059, guid: cd114cf7f2714954981d81dc0e0841aa, type: 3}
   bulletSpawnPoints:
   - {fileID: 5173138382575907578}
