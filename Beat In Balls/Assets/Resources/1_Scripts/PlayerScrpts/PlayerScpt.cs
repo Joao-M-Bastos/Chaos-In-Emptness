@@ -6,6 +6,7 @@ public class PlayerScpt : MonoBehaviour
 {
     PlayerCombat playerCombat;
     HandManager playerHand;
+    PlayerMovement playerMovement;
     [SerializeField]GameManagerScpt gameManager;
 
     float sobreEfeitos;
@@ -18,8 +19,9 @@ public class PlayerScpt : MonoBehaviour
 
     //Combat
 
-    public void TakeDamage(int value)
+    public void TakeDamage(int value, Vector3 knockbackDirection, float knockbackPower)
     {
+        playerMovement.TakeKnockback(knockbackDirection, knockbackPower);
         if (playerCombat.TakeDamage(value))
         {
             gameManager.PauseGame();

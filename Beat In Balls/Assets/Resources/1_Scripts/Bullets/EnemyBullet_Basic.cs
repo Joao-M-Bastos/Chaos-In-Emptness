@@ -11,7 +11,7 @@ public class EnemyBullet_Basic : Bullets
 
     protected override void HitPlayer(PlayerScpt player)
     {
-        player.TakeDamage(damage);
+        player.TakeDamage(damage,this.transform.forward, knockbackValue);
     }
 
     protected override void Move()

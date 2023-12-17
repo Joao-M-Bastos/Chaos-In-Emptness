@@ -9,12 +9,12 @@ public abstract class Enemy : MonoBehaviour
     protected GameObject player;
     protected Rigidbody enemyRigidbody;
 
-    [SerializeField] protected int vidaBase, danoBase, resistanceBase, resistenciaEmpurraoBase, empurraoBase;
+    [SerializeField] protected int vidaBase, danoBase, resistanceBase, resistenciaEmpurraoBase, knockbackPowerBase;
     [SerializeField] protected float velocidadeBase;
     
     float attackspeedBase = 1;
 
-    protected int vida, dano, resistance, resistenciaEmpurrao, empurrao;
+    protected int vida, dano, resistance, resistenciaEmpurrao, knockbackPower;
     protected float velocidade, attackspeed;
 
     protected float stunCooldown;
@@ -35,7 +35,7 @@ public abstract class Enemy : MonoBehaviour
         vida = vidaBase;
         dano = danoBase;
         resistance = resistanceBase;
-        empurrao = empurraoBase;
+        knockbackPower = knockbackPowerBase;
         velocidade = velocidadeBase;
         attackspeed = attackspeedBase;
     }
@@ -67,7 +67,7 @@ public abstract class Enemy : MonoBehaviour
         PlayerScpt player;
         if (collision.gameObject.TryGetComponent<PlayerScpt>(out player))
         {
-            player.TakeDamage(dano);
+            player.TakeDamage(dano,transform.forward,knockbackPower);
         }
     }
     protected float getSpeedFromVelocity(Vector3 playerVelocity)
@@ -126,7 +126,7 @@ public abstract class Enemy : MonoBehaviour
         vida += currentEffect.EffectOnLife();
         dano += danoBase * (currentEffect.EffectOnDamage()/100);
         resistance += resistanceBase * (currentEffect.EffectOnResistance()/100);
-        empurrao += empurraoBase * (currentEffect.EffectOnKnockback()/100);
+        knockbackPower += knockbackPowerBase * (currentEffect.EffectOnKnockback()/100);
         velocidade += velocidadeBase * (currentEffect.EffectOnSpeed()/100);
         attackspeed += attackspeedBase * (currentEffect.EffectOnAttackSpeed()/100);
 
@@ -154,7 +154,7 @@ public abstract class Enemy : MonoBehaviour
 
         dano -= danoBase * (currentEffect.EffectOnDamage() / 100);
         resistance -= resistanceBase * (currentEffect.EffectOnResistance() / 100);
-        empurrao -= empurraoBase * (currentEffect.EffectOnKnockback() / 100);
+        knockbackPower -= knockbackPowerBase * (currentEffect.EffectOnKnockback() / 100);
         velocidade -= velocidadeBase * (currentEffect.EffectOnSpeed() / 100);
         attackspeed -= attackspeedBase * (currentEffect.EffectOnAttackSpeed() / 100);
 

@@ -21,4 +21,6 @@ public class PlayerCombat : MonoBehaviour
         lifeIndicator.text = "Vida: " + life;
         return life < 1;
     }
+
+    
 }

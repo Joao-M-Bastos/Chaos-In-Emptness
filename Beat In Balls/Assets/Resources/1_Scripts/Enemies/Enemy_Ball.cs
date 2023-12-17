@@ -81,7 +81,7 @@ public class Enemy_Ball : Enemy
         if (collision.gameObject.TryGetComponent<PlayerScpt>(out player))
         {
             Destroy(this.gameObject);
-            player.TakeDamage(dano);
+            player.TakeDamage(dano, this.transform.forward, knockbackPower);
         }
     }
 

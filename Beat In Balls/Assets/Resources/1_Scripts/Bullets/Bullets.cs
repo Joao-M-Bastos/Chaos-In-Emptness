@@ -65,7 +65,7 @@ public abstract class Bullets : MonoBehaviour
 
     public void DealDamageToPlayer(PlayerScpt player)
     {
-        player.TakeDamage(damage);
+        player.TakeDamage(damage, this.transform.forward, knockbackValue);
     }
 
     public void DealDamageToEnemy(Enemy enemy)

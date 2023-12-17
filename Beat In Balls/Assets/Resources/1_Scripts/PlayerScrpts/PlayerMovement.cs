@@ -43,4 +43,9 @@ public class PlayerMovement : MonoBehaviour
     {
         return Mathf.Abs(playerVelocity.x) + Mathf.Abs(playerVelocity.y);
     }
+
+    public void TakeKnockback(Vector3 knockbackDirection, float knockbackPower)
+    {
+        this.playerRb.AddForce(knockbackDirection * knockbackPower, ForceMode.Impulse);
+    }
 }

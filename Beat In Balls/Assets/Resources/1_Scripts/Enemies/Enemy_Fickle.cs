@@ -74,7 +74,7 @@ public class Enemy_Fickle : Enemy
         if (collision.gameObject.TryGetComponent<PlayerScpt>(out player))
         {
             Destroy(this.gameObject);
-            player.TakeDamage(dano);
+            player.TakeDamage(dano, this.transform.forward, knockbackPower);
         }
     }
 
