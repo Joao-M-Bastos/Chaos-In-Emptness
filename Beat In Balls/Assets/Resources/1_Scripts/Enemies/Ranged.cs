@@ -6,7 +6,7 @@ public abstract class Ranged : Enemy
 {
     [SerializeField] protected int viewDistance;
 
-    [SerializeField] protected float rechargeCooldownBase;
+    [SerializeField] protected float rechargeCooldownBase, shootCooldown;
     private float rechargeCooldown;
 
     [SerializeField] GameObject bullet;
@@ -26,8 +26,10 @@ public abstract class Ranged : Enemy
         return false;
     }
 
-    protected void Shoot()
+    protected IEnumerator Shoot(float cooldown)
     {
+        yield return new WaitForSeconds(cooldown);
+
         foreach(Transform t in bulletSpawnPoints)
         {
             Instantiate(bullet, t.position, t.rotation);

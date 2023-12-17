@@ -33,7 +33,7 @@ public class Enemy_Sniper : Ranged
 
     public override void Attack()
     {
-        Shoot();
+        Shoot(shootCooldown);
     }
 
     public override bool CanAttack()
