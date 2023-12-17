@@ -21,7 +21,7 @@ public abstract class Ranged : Enemy
             return true;
         }
 
-        rechargeCooldown -= Time.deltaTime;
+        rechargeCooldown -= Time.deltaTime * attackspeed;
 
         return false;
     }

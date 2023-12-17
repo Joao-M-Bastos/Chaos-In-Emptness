@@ -95,7 +95,7 @@ public class Enemy_Fickle : Enemy
             randomDashCurrentCooldown = randomDashCooldownBase;
             return true;
         }
-        randomDashCurrentCooldown -= Time.deltaTime;
+        randomDashCurrentCooldown -= Time.deltaTime * attackspeed;
 
         return false;
     }
@@ -104,7 +104,7 @@ public class Enemy_Fickle : Enemy
     {
         Vector3 fickleVelocity = enemyRigidbody.velocity;
 
-        fickleVelocity = new Vector3(Random.Range(-1,1f), Random.Range(-1, 1f), 0).normalized * 10;
+        fickleVelocity = new Vector3(Random.Range(-1,1f), Random.Range(-1, 1f), 0).normalized * velocidade;
 
         enemyRigidbody.velocity = fickleVelocity;
 

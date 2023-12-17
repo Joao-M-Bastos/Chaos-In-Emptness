@@ -150,7 +150,7 @@ MonoBehaviour:
   effectPotency: 50
   hasEffect: 1
   damage: 2
-  knockbackValue: 10
+  knockbackValue: 15
   lifeTime: 2
   speed: 5
 --- !u!1 &6596350791503227971

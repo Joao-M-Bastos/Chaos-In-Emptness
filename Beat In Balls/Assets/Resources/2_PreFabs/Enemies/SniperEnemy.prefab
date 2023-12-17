@@ -226,8 +226,8 @@ Transform:
   m_GameObject: {fileID: 7498905215852250049}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 12.02, y: 7.99, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4909536609821966994}
   - {fileID: 9205676851677475923}
@@ -284,7 +284,6 @@ MonoBehaviour:
   resistenciaEmpurraoBase: 0
   empurraoBase: 3
   velocidadeBase: 4
-  attackspeedBase: 0
   viewDistance: 20
   rechargeCooldownBase: 4
   bullet: {fileID: 4535646125244181059, guid: cd114cf7f2714954981d81dc0e0841aa, type: 3}

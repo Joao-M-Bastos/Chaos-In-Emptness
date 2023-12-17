@@ -10,7 +10,9 @@ public abstract class Enemy : MonoBehaviour
     protected Rigidbody enemyRigidbody;
 
     [SerializeField] protected int vidaBase, danoBase, resistanceBase, resistenciaEmpurraoBase, empurraoBase;
-    [SerializeField] protected float velocidadeBase, attackspeedBase;
+    [SerializeField] protected float velocidadeBase;
+    
+    float attackspeedBase = 1;
 
     protected int vida, dano, resistance, resistenciaEmpurrao, empurrao;
     protected float velocidade, attackspeed;
@@ -110,6 +112,9 @@ public abstract class Enemy : MonoBehaviour
     //Efeitos
     public void ApplyEffect(int _effectId)
     {
+        if (isUndereffect)
+            return;
+
         effectID = _effectId;
 
         Effects currentEffect = ListOfEffects.GetTargetEffect(effectID);
