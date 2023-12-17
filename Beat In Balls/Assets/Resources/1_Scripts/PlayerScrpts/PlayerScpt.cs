@@ -25,6 +25,7 @@ public class PlayerScpt : MonoBehaviour
         playerMovement.TakeKnockback(knockbackDirection, _knockbackPower);
         if (playerCombat.TakeDamage(value))
         {
+            gameManager.PlayerDied();
             gameManager.PauseGame();
             Destroy(this.gameObject);
         }

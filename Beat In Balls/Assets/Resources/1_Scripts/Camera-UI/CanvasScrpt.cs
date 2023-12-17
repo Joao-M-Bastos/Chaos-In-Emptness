@@ -6,6 +6,7 @@ public class CanvasScrpt : MonoBehaviour
 {
     [SerializeField] GameObject pauseObj;
     [SerializeField] GameObject gameObj;
+    [SerializeField] GameObject continueButton;
     public void TurnOffPause()
     {
         pauseObj.SetActive(false);
@@ -16,5 +17,15 @@ public class CanvasScrpt : MonoBehaviour
     {
         pauseObj.SetActive(true);
         gameObj.SetActive(false);
+    }
+
+    public void CantContinue()
+    {
+        continueButton.SetActive(false);
+    }
+
+    public void Sair()
+    {
+        Application.Quit();
     }
 }

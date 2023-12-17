@@ -746,7 +746,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.1
+  m_fontSize: 40
   m_fontSizeBase: 13.4
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1849,6 +1849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseObj: {fileID: 1903233720}
   gameObj: {fileID: 2057175808}
+  continueButton: {fileID: 1989195871}
 --- !u!1 &1079182723
 GameObject:
   m_ObjectHideFlags: 0
@@ -7513,7 +7514,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1678934617}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1052379521}
+        m_TargetAssemblyTypeName: CanvasScrpt, Assembly-CSharp
+        m_MethodName: Sair
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1678934617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7886,7 +7899,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.8
+  m_fontSize: 33.7
   m_fontSizeBase: 13.4
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8449,7 +8462,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.1
+  m_fontSize: 40
   m_fontSizeBase: 13.4
   m_fontWeight: 400
   m_enableAutoSizing: 1

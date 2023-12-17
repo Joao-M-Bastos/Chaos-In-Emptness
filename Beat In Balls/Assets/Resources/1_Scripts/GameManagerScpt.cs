@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System;
 
 public class GameManagerScpt : MonoBehaviour
 {
-    [SerializeField]CanvasScrpt canvasScrpt;
+    [SerializeField] CanvasScrpt canvasScrpt;
+
+    bool isPlayerDead;
 
     static bool isPaused;
     public static bool IsPaused => isPaused;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -27,6 +24,8 @@ public class GameManagerScpt : MonoBehaviour
 
     public void PauseGame()
     {
+        if (isPlayerDead)
+            canvasScrpt.CantContinue();
         Time.timeScale = 0;
         isPaused = true;
         canvasScrpt.TurnOnPause();
@@ -34,9 +33,17 @@ public class GameManagerScpt : MonoBehaviour
     
     public void UnpauseGame()
     {
+        if (isPlayerDead)
+            return;
+
         Time.timeScale = 1;
         isPaused = false;
         canvasScrpt.TurnOffPause();
+    }
+
+    internal void PlayerDied()
+    {
+        isPlayerDead = true;
     }
 
     public void Reiniciar()
@@ -45,5 +52,7 @@ public class GameManagerScpt : MonoBehaviour
 
         SceneManager.LoadScene(0);
     }
+
+    
 
 }
