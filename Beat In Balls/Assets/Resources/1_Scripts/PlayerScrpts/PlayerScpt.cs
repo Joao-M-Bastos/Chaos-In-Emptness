@@ -20,9 +20,9 @@ public class PlayerScpt : MonoBehaviour
 
     //Combat
 
-    public void TakeDamage(int value, Vector3 knockbackDirection, float knockbackPower)
+    public void TakeDamage(int value, Vector3 knockbackDirection, float _knockbackPower)
     {
-        playerMovement.TakeKnockback(knockbackDirection, knockbackPower);
+        playerMovement.TakeKnockback(knockbackDirection, _knockbackPower);
         if (playerCombat.TakeDamage(value))
         {
             gameManager.PauseGame();

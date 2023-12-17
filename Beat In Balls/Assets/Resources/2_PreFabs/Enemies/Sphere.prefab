@@ -119,7 +119,7 @@ MonoBehaviour:
   danoBase: 1
   resistanceBase: 0
   resistenciaEmpurraoBase: 1
-  empurraoBase: 3
+  knockbackPowerBase: 5
   velocidadeBase: 7
 --- !u!135 &7228722400752019780
 SphereCollider:

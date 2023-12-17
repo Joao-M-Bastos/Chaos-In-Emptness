@@ -281,8 +281,8 @@ MonoBehaviour:
   vidaBase: 6
   danoBase: 2
   resistanceBase: 1
-  resistenciaEmpurraoBase: 0
-  knockbackPowerBase: 1
+  resistenciaEmpurraoBase: 1
+  knockbackPowerBase: 2
   velocidadeBase: 4
   viewDistance: 20
   rechargeCooldownBase: 4

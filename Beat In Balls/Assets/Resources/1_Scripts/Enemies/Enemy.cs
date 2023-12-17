@@ -64,8 +64,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void OnCollisionEnter(Collision collision)
     {
-        PlayerScpt player;
-        if (collision.gameObject.TryGetComponent<PlayerScpt>(out player))
+        if (collision.gameObject.TryGetComponent<PlayerScpt>(out PlayerScpt player))
         {
             player.TakeDamage(dano,transform.forward,knockbackPower);
         }
@@ -82,14 +81,12 @@ public abstract class Enemy : MonoBehaviour
 
     public abstract void SpecialAttack();
 
-    public void RecivedAttack(int damage, Vector3 projectForward, int bulletKnockbackValue)
+    public void RecivedAttack(int damage, Vector3 direction, int bulletKnockbackValue)
     {
         int dmgNonResisted = damage - resistance;
 
         if(dmgNonResisted > 0)
             vida -= dmgNonResisted;
-
-        Vector3 direction = projectForward;
         float knockBackValue = bulletKnockbackValue - resistenciaEmpurrao;
 
         if (knockBackValue < 0)
