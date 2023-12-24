@@ -48,7 +48,9 @@ public class GameManagerScpt : MonoBehaviour
 
     public void Reiniciar()
     {
-        UnpauseGame();
+        Time.timeScale = 1;
+        isPaused = false;
+        canvasScrpt.TurnOffPause();
 
         SceneManager.LoadScene(0);
     }
