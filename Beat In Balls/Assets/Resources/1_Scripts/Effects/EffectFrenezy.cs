@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectFragile : Effects
+public class EffectFrenezy : Effects
 {
-    public EffectFragile(float value)
+    public EffectFrenezy(float value)
     {
         timeActive = value;
     }
 
     public override float EffectOnAttackSpeed()
     {
-        return 0;
+        return +50;
     }
 
     public override int EffectOnDamage()
@@ -31,11 +31,11 @@ public class EffectFragile : Effects
 
     public override int EffectOnResistance()
     {
-        return -5;
+        return -2;
     }
 
     public override float EffectOnSpeed()
     {
-        return -20;
+        return 0;
     }
 }

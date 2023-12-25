@@ -10,7 +10,9 @@ public class ListOfEffects : MonoBehaviour
     {
         effects = new Effects[]{
             new EffectSlow(10),
-            new EffectStun(3)
+            new EffectStun(3),
+            new EffectFragile(5),
+            new EffectFrenezy(5)
         };
     }
 
