@@ -25,7 +25,7 @@ public class PlayerScpt : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
             ApplyEffect(1);
 
-        if (IsUndereffect())
+        if (IsUnderEffect())
             TryCleatEffect();
     }
 
