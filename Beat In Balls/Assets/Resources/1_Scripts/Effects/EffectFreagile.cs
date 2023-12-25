@@ -2,17 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectFreagile : MonoBehaviour
+public class EffectFreagile : Effects
 {
-    // Start is called before the first frame update
-    void Start()
+    public EffectFreagile(float value)
     {
-        
+        timeActive = value;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override float EffectOnAttackSpeed()
     {
-        
+        return 0;
+    }
+
+    public override int EffectOnDamage()
+    {
+        return 0;
+    }
+
+    public override int EffectOnKnockback()
+    {
+        return 0;
+    }
+
+    public override int EffectOnLife()
+    {
+        return 0;
+    }
+
+    public override int EffectOnResistance()
+    {
+        return -5;
+    }
+
+    public override float EffectOnSpeed()
+    {
+        return 0;
     }
 }
