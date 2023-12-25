@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488820187}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
   m_LocalPosition: {x: 0, y: 0.15099998, z: 1.152}
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7643101781525356813}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
 --- !u!1 &1604318084
 GameObject:
@@ -54,13 +54,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604318084}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.08715578, y: 0, z: 0, w: 0.9961947}
   m_LocalPosition: {x: 0, y: 0.151, z: 1.152}
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7643101781525356813}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -10, y: 0, z: 0}
 --- !u!1 &2702092608041869926
 GameObject:
@@ -86,6 +86,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2702092608041869926}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -96,7 +97,6 @@ Transform:
   - {fileID: 1488820188}
   - {fileID: 1604318085}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7904860962272703893
 MonoBehaviour:
@@ -110,18 +110,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31aed0c6fe6e14409235924345f74da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseShootCooldown: 0.6
+  isAutoFire: 0
+  ammoCapacity: 4
+  baseRechargeTime: 1
+  bulletSizeChange: 0.4
+  bulletSpeedChange: 2
+  bulletDamageChange: 2
+  bulletKnockbackChange: 1
+  bulletLifeSpamChange: -0.4
   startingPoint:
   - {fileID: 6745201489562130001}
   - {fileID: 1488820188}
   - {fileID: 1604318085}
-  cooldownBasePump: 0.6
-  isAutoFirePump: 0
-  ammoCapacityPump: 4
-  rechargeTimePump: 1.5
-  bulletSizeChange: 0.4
-  bulletSpeedChange: 2
-  bulletDamageChange: 2
-  bulletLifeSpamChange: -0.4
 --- !u!1 &3338965029757156820
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,19 +146,20 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3338965029757156820}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.151, z: 1.152}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7643101781525356813}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5222610818776131860
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7643101781525356813}
     m_Modifications:
     - target: {fileID: 5018824232611119737, guid: da48e32f904babc4a8c9a4b5dd653f47, type: 3}
@@ -209,6 +211,9 @@ PrefabInstance:
       value: Body
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da48e32f904babc4a8c9a4b5dd653f47, type: 3}
 --- !u!4 &998676318531611501 stripped
 Transform:

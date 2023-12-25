@@ -1011,7 +1011,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.5
+  m_fontSize: 27.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2180,7 +2180,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.5
+  m_fontSize: 27.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2697,8 +2697,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bootsParticules: {fileID: 1670118521}
-  ascentVelocity: 7
-  maxSpeed: 7
+  baseAscentVelocity: 9
+  maxSpeed: 9
 --- !u!114 &1637238201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2712,7 +2712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 5
-  resistance: 0
+  baseResistance: 0
   lifeIndicator: {fileID: 1114646509}
 --- !u!114 &1637238202
 MonoBehaviour:

@@ -4,34 +4,44 @@ using UnityEngine;
 
 public abstract class Gun : MonoBehaviour
 {
-    float cooldown, cooldownBase;
-    bool isAutoFire;
-    int ammoCurrent, ammoCapacity;
-    public int CurrentAmmo => ammoCurrent;
+    [SerializeField] public float baseShootCooldown;
+    [SerializeField] bool isAutoFire;
+    [SerializeField] int ammoCapacity;
+    [SerializeField] public float baseRechargeTime;
+
+    [SerializeField] protected float bulletSizeChange;
+    [SerializeField] protected int bulletSpeedChange;
+    [SerializeField] protected int bulletDamageChange;
+    [SerializeField] protected int bulletKnockbackChange;
+    [SerializeField] protected float bulletLifeSpamChange;
+
+    int ammoCurrent;
+    float shootCooldown;
     float rechargeTime;
-    bool isRecharding;
+    public float baseRecoverTime = 1;
+    public float recoverTime;
+
+    bool recharge;
     bool isLocked;
-    public bool IsRecharding => isRecharding;
     public bool IsLocked => isLocked;
+    public int CurrentAmmo => ammoCurrent;
 
 
-    protected void SetValues(float cooldownBase, bool isAutoFire, int ammoCapacity, float rechargeTime)
+    private void Start()
     {
-        this.cooldownBase = cooldownBase;
-        this.cooldown = 0;
-        this.isAutoFire = isAutoFire;
-        this.ammoCapacity = ammoCapacity;
-        this.ammoCurrent = ammoCapacity;
-        this.rechargeTime = rechargeTime;
+        ammoCurrent = ammoCapacity;
+        shootCooldown = baseShootCooldown;
+        rechargeTime = baseRechargeTime;
+        recoverTime = baseRecoverTime;
     }
 
     public void MouseClicked(GameObject bullet)
     {
-        if (!IsLocked || !IsRecharding)
+        if (!IsLocked || !isRecharging())
         {
             if (HasAmmo())
                 Shoot(bullet);
-            else if(!IsRecharding)
+            else if(!isRecharging())
                 StartRecharging();
         }
     }
@@ -46,9 +56,9 @@ public abstract class Gun : MonoBehaviour
 
     public bool CheckCoolDown()
     {
-        if (cooldown <= 0)
+        if (shootCooldown <= 0)
             return true;
-        cooldown -= Time.deltaTime;
+        shootCooldown -= Time.deltaTime * recoverTime;
         return false;
     }
 
@@ -59,22 +69,33 @@ public abstract class Gun : MonoBehaviour
 
     public void StartRecharging()
     {
-        if(ammoCurrent != ammoCapacity)
-            StartCoroutine(Recharging());
+        if (ammoCurrent != ammoCapacity)
+            rechargeTime = baseRechargeTime;
+        recharge = true;
     }
 
-    public IEnumerator Recharging()
+    public void ManageRecharge()
     {
-        isRecharding = true;
-        yield return new WaitForSeconds(rechargeTime);
-        ammoCurrent = ammoCapacity;
-        isRecharding = false;
+        if (isRecharging())
+        {
+            rechargeTime -= Time.deltaTime * recoverTime;
+        }
+        else if (recharge)
+        {
+            ammoCurrent = ammoCapacity;
+            recharge = false;
+        }
+    }
+
+    public bool isRecharging()
+    {
+        return rechargeTime >= 0;
     }
 
     protected void AmmoSpent(int value)
     {
         ammoCurrent-=value;
-        cooldown = cooldownBase;
+        shootCooldown = baseShootCooldown;
     }
 
     protected void AddChangesToBullet(Bullets bullet, float bulletSizeChange, int bulletDamageChange, int bulletSpeedChange, float bulletLifeSpamChange)

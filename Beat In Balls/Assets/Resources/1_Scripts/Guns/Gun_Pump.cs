@@ -6,21 +6,6 @@ public class Gun_Pump : Gun
 {
     [SerializeField] Transform[] startingPoint;
 
-    [SerializeField] float cooldownBasePump;
-    [SerializeField] bool isAutoFirePump;
-    [SerializeField] int ammoCapacityPump;
-    [SerializeField] float rechargeTimePump;
-
-    [SerializeField] float bulletSizeChange;
-    [SerializeField] int bulletSpeedChange;
-    [SerializeField] int bulletDamageChange;
-    [SerializeField] float bulletLifeSpamChange;
-
-    private void Awake()
-    {
-        SetValues(cooldownBasePump, isAutoFirePump, ammoCapacityPump, rechargeTimePump);
-    }
-
     public override void Shoot(GameObject bullet)
     {
         for (int i = 0; i < startingPoint.Length; i++)

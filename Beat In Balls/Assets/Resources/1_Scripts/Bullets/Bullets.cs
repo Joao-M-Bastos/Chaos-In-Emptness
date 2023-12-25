@@ -28,6 +28,11 @@ public abstract class Bullets : MonoBehaviour
         lifeTime += value;
     }
 
+    public void AddToKnockback(int value)
+    {
+        knockbackValue += value;
+    }
+
     protected abstract void OnDestroy();
 
     protected abstract void HitEnemy(Enemy enemy);

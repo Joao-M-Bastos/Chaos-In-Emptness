@@ -121,13 +121,11 @@ public abstract class Enemy : MonoBehaviour
         effectTimer = currentEffect.GetTime();
 
         vida += currentEffect.EffectOnLife();
-        dano += danoBase * (currentEffect.EffectOnDamage()/100);
-        resistance += resistanceBase * (currentEffect.EffectOnResistance()/100);
-        knockbackPower += knockbackPowerBase * (currentEffect.EffectOnKnockback()/100);
+        dano += danoBase * (currentEffect.EffectOnDamage());
+        resistance += resistanceBase * (currentEffect.EffectOnResistance());
+        knockbackPower += knockbackPowerBase * (currentEffect.EffectOnKnockback());
         velocidade += velocidadeBase * (currentEffect.EffectOnSpeed()/100);
         attackspeed += attackspeedBase * (currentEffect.EffectOnAttackSpeed()/100);
-
-        Debug.Log(velocidade);
     }
 
     public bool IsUnderEffect()
@@ -152,12 +150,10 @@ public abstract class Enemy : MonoBehaviour
         effectTimer = 0;
         isUndereffect = false;
 
-        dano -= danoBase * (currentEffect.EffectOnDamage() / 100);
-        resistance -= resistanceBase * (currentEffect.EffectOnResistance() / 100);
-        knockbackPower -= knockbackPowerBase * (currentEffect.EffectOnKnockback() / 100);
+        dano -= danoBase * (currentEffect.EffectOnDamage());
+        resistance -= resistanceBase * (currentEffect.EffectOnResistance());
+        knockbackPower -= knockbackPowerBase * (currentEffect.EffectOnKnockback());
         velocidade -= velocidadeBase * (currentEffect.EffectOnSpeed() / 100);
         attackspeed -= attackspeedBase * (currentEffect.EffectOnAttackSpeed() / 100);
-
-        Debug.Log(velocidade);
     }
 }

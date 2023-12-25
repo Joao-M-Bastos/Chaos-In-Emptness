@@ -7,12 +7,15 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody playerRb;
     public ParticleSystem bootsParticules;
-    [SerializeField] float ascentVelocity;
+    [SerializeField] float baseAscentVelocity;
     [SerializeField] float maxSpeed;
+
+    float ascentVelocity;
 
     // Start is called before the first frame update
     void Start()
     {
+        ascentVelocity = baseAscentVelocity;
         playerRb = this.GetComponent<Rigidbody>();
     }
 
@@ -48,5 +51,15 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log(knockbackDirection + "" + knockbackPower);
         this.playerRb.AddForce(knockbackDirection * (knockbackPower), ForceMode.Impulse);
+    }
+
+    public void ApplyEffect(float _speed)
+    {
+        ascentVelocity += baseAscentVelocity * (_speed / 100);
+    }
+
+    public void ClearEffect(float _speed)
+    {
+        ascentVelocity -= baseAscentVelocity * (_speed / 100);
     }
 }

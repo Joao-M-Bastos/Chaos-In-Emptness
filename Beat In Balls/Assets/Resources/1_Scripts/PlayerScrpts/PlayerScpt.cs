@@ -9,13 +9,24 @@ public class PlayerScpt : MonoBehaviour
     PlayerMovement playerMovement;
     [SerializeField]GameManagerScpt gameManager;
 
-    float sobreEfeitos;
+    int effectID;
+    float effectTimer;
+    bool isUndereffect;
 
     private void Awake()
     {
         playerCombat = GetComponent<PlayerCombat>();
         playerHand = GetComponentInChildren<HandManager>();
         playerMovement = GetComponent<PlayerMovement>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+            ApplyEffect(1);
+
+        if (IsUndereffect())
+            TryCleatEffect();
     }
 
     //Combat
@@ -44,20 +55,52 @@ public class PlayerScpt : MonoBehaviour
     }
 
     //Efeitos
-    public void ApplyEffect(float time)
+    public void ApplyEffect(int _effectId)
     {
-        sobreEfeitos = time;
+        if (isUndereffect)
+            return;
 
+        effectID = _effectId;
 
+        Effects currentEffect = ListOfEffects.GetTargetEffect(effectID);
+
+        isUndereffect = true;
+
+        effectTimer = currentEffect.GetTime();
+
+        playerCombat.ApplyEffect(currentEffect.EffectOnLife(), currentEffect.EffectOnResistance());
+
+        playerHand.ApplyEffect(currentEffect.EffectOnDamage(), currentEffect.EffectOnKnockback(), currentEffect.EffectOnAttackSpeed());
+
+        playerMovement.ApplyEffect(currentEffect.EffectOnSpeed());
     }
 
     public bool IsUnderEffect()
     {
-        return sobreEfeitos > 0;
+        return isUndereffect;
+    }
+
+    public void TryCleatEffect()
+    {
+        effectTimer -= Time.deltaTime;
+        if (effectTimer < 0)
+            ClearEffect();
     }
 
     public void ClearEffect()
     {
+        if (!isUndereffect)
+            return;
+
+        Effects currentEffect = ListOfEffects.GetTargetEffect(effectID);
+
+        effectTimer = 0;
+        isUndereffect = false;
+
+        playerCombat.ClearEffect(currentEffect.EffectOnResistance());
+
+        playerHand.ClearEffect(currentEffect.EffectOnDamage(), currentEffect.EffectOnKnockback(), currentEffect.EffectOnAttackSpeed());
         
+        playerMovement.ClearEffect(currentEffect.EffectOnSpeed());
     }
 }

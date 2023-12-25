@@ -24,6 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2702092608041869926}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,7 +33,6 @@ Transform:
   - {fileID: 998676318531611501}
   - {fileID: 6745201489562130001}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8834446942107168824
 MonoBehaviour:
@@ -46,15 +46,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8c9b584c620b748ba2d2b87877791b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingPoint: {fileID: 6745201489562130001}
-  cooldownBasePistol: 0.4
-  isAutoFirePistol: 1
-  ammoCapacityPistol: 6
-  rechargeTimePistol: 0.8
+  baseShootCooldown: 0.4
+  isAutoFire: 1
+  ammoCapacity: 6
+  baseRechargeTime: 0.8
   bulletSizeChange: 1
   bulletSpeedChange: 0
   bulletDamageChange: 3
+  bulletKnockbackChange: 0
   bulletLifeSpamChange: 2
+  startingPoint: {fileID: 6745201489562130001}
 --- !u!1 &3338965029757156820
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,19 +79,20 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3338965029757156820}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.033000693, y: 0.353, z: 0.725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7643101781525356813}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2170434937984061585
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7643101781525356813}
     m_Modifications:
     - target: {fileID: 600216536242602685, guid: 089fc906a9c54f240a42644fcf50c413, type: 3}
@@ -142,6 +144,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 089fc906a9c54f240a42644fcf50c413, type: 3}
 --- !u!4 &998676318531611501 stripped
 Transform:
