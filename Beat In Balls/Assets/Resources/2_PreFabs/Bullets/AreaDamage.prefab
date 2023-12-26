@@ -72,7 +72,7 @@ MonoBehaviour:
   effectPotency: 0
   hasEffect: 0
   damage: 3
-  knockbackValue: 2
+  knockbackValue: 20
   lifeTime: 0.5
 --- !u!198 &1532677169283748749
 ParticleSystem:
