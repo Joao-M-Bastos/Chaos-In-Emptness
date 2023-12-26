@@ -23,6 +23,6 @@ public class ExplosiveBullet : Bullets
 
     protected override void OnDestroy()
     {
-        Instantiate(explosiveArea, this.transform.position, Quaternion.identity);
+        Instantiate(explosiveArea, this.transform.position, this.transform.rotation);
     }
 }
