@@ -29,6 +29,7 @@ public class DamageArea : MonoBehaviour
         {
             DealDamageToEnemy(enemy);
             TryApllyEffect(other.gameObject.GetComponent<EffectApplyer>());
+            Debug.Log("a");
         }
         else if (other.gameObject.TryGetComponent<PlayerScpt>(out PlayerScpt player))
         {

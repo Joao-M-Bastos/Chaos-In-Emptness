@@ -162,7 +162,7 @@ MonoBehaviour:
   hasEffect: 0
   damage: 1
   knockbackValue: 0
-  lifeTime: 1
+  lifeTime: 0.8
   speed: 4
   explosiveArea: {fileID: 6770951166503227152, guid: 5e88aa4d9a0166944b09a5ae88f7e311, type: 3}
 --- !u!1 &6596350791503227971
