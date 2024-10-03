@@ -7873,7 +7873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1766597401
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -13009,7 +13009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGun: {fileID: 0}
-  currentBullet: {fileID: 4535646125244181059, guid: 3fa1292b0edb44e48abb49a092d7adb9, type: 3}
+  currentBullet: {fileID: 4535646125244181059, guid: ae50131628ff9dc48a037ec29cd837d2, type: 3}
   listOfGuns:
   - {fileID: 8834446942107168824, guid: e836dbeb22fa36e44b515ad89a4fbe46, type: 3}
   - {fileID: 7904860962272703893, guid: 998d8087f951e2e4fb77e1aeb42d2bcb, type: 3}
